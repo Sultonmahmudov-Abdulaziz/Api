@@ -20,7 +20,7 @@ class Card(models.Model):
     )
 
     card_number = models.CharField(max_length=16,unique=True,db_index=True)
-    valid_time = models.CharField(max_length=40)
+    valid_time = models.CharField(max_length=4)
     card_type = models.CharField(max_length=20)
     bank_name = models.CharField(max_length=50)
     name = models.CharField(max_length=100)

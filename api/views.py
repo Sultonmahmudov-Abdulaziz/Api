@@ -35,3 +35,10 @@ class OneCardApiView(APIView):
     
 
 
+class CreateCardView(APIView):
+    def post(self, request):
+        serializer = CardSerializer(data=request.data)
+        return Response(serializer.errors, status=400)
+    
+
+
