@@ -22,5 +22,30 @@ class StudentDetailApiView(APIView):
 class StudentUpdateApiView(APIView):
     def put(self, request,id):
         student = get_object_or_404(Student,id=id)
-        data = request.POST
-        print(data)
+        rezult = request.data
+        serializer = StudentSerializer(instance=student,data=rezult)
+
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+    def patch(self, request,id):
+        student = get_object_or_404(Student,id=id)
+        rezult = request.data
+        serializer = StudentSerializer(instance=student, data=rezult, partial=True)
+
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+
+class StudentCreateApiView(APIView):
+    def post(self, request):
+        rezult = request.data
+        serializer = StudentSerializer(data=rezult)
+
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+

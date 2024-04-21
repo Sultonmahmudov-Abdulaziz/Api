@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import CardApiView,OneCardApiView
-from .student_api import StudentApiListView,StudentDetailApiView,StudentUpdateApiView
+from .student_api import StudentApiListView,StudentDetailApiView,StudentUpdateApiView,StudentCreateApiView
 
 
 
@@ -14,5 +14,6 @@ urlpatterns = [
     path('student-api/', StudentApiListView.as_view(), name='student_api'),
     path('student-detail/<int:id>/', StudentDetailApiView.as_view(), name='student_detail'),
     path('student-update/<int:id>/', StudentUpdateApiView.as_view(), name='student_update'),
+    path('student-create/', StudentCreateApiView.as_view(), name='student_create'),
 
 ]
